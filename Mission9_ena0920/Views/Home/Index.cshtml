@@ -3,27 +3,24 @@
 *@
 @{
     ViewBag.Calc = 20 / 5;
-        }
+}
 
 @model BooksViewModel
 
 <h1 class="border-dark">De Boekenwinkel</h1>
 
+@*This is another of my bootstrap extras*@
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Welcome!</strong> We are constantly expanding our collection. Please be patient as we bring more of your favorite titles!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+
 @foreach (Book b in Model.Books)
-            {
-                <h3>@b.Title by @b.Author</h3>
-                <h4 class="text-danger">$@b.Price</h4>
+{
+    <partial name="BookSummary" model="b" />
+}
 
-                <ul>
-                    <li>Publisher: @b.Publisher</li>
-                    <li>ISBN: @b.Isbn</li>
-                    <li>Classification: @b.Classification</li>
-                    <li>Category: @b.Category</li>
-                    <li>Page Count: @b.PageCount</li>
-                    
-                </ul>
-
-                <br />
-            }
-
-<div page-model="@Model.PageInfo" page-action="Index"></div>
+<div page-model="@Model.PageInfo" page-action="Index" page-class="btn"
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-class-enabled="true"
+     class="btn-group pull-right m-1"></div>

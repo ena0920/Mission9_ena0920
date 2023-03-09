@@ -33,6 +33,11 @@ namespace Mission9_ena0920
             });
 
             services.AddScoped<Mission9Repository, EFMission9Repository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,13 +49,23 @@ namespace Mission9_ena0920
             }
 
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("typePage", "{bookCategory}/Page{pageNum}", new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute("Paging", "Page{pageNum}", new { Controller = "Home", action = "Index", pageNum = 1 });
+
+                endpoints.MapControllerRoute("type", "{bookCategory}", new { Controller = "Home", action = "Index", pageNum = 1 });
+
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
+
+
         }
     }
 }
