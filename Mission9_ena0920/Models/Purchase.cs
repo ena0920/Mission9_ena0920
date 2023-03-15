@@ -29,6 +29,9 @@ namespace Mission9_ena0920.Models
         [Required(ErrorMessage = "Please enter a valid city:")]
         public string City { get; set; }
 
+        [Required(ErrorMessage = "Please enter a valid zip:")]
+        public string Zip { get; set; }
+
         [Required(ErrorMessage = "Please enter a valid state:")]
         public string State { get; set; }
 
