@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Components
+@using Book.Models
+@using System.Linq
+
+<div class="navbar-nav">
+    <a class="nav-link" href="/cart">
+        <span class="fas fa-shopping-cart"></span>
+        <span class="badge badge-pill badge-danger">@Cart.Items.Sum(i => i.Quantity)</span>
+        <span class="sr-only">items in cart</span>
+        <span class="ml-1">@string.Format("{0:C}", Cart.Total)</span>
+    </a>
+</div>
+
+@code {
+    [Inject]
+    public Book Cart { get; set; }
+}
