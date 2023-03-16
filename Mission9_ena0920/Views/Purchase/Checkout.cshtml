@@ -9,7 +9,9 @@
 <h2>Checkout Now!</h2>
 <h3>Please enter your information and we'll happily help you complete your purchase!</h3>
 
-<form method="post">
+<form method="post" asp-controller="Purchase" asp-action="Checkout">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
     <h4>Ship To</h4>
 
     <div class="form-group">

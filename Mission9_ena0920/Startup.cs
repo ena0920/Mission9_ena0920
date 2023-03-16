@@ -33,6 +33,7 @@ namespace Mission9_ena0920
             });
 
             services.AddScoped<Mission9Repository, EFMission9Repository>();
+            services.AddScoped<IPurchaseRepository, EFPurchaseRepository>();
 
             services.AddRazorPages();
 
